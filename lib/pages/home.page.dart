@@ -89,13 +89,13 @@ _listaBotonesFila1() {
 
 _listaBotonesFila1M() {
   return [
-    pintarBoton(texto: "7", metodo: () {}),
-    pintarBoton(texto: "8", metodo: () {}),
-    pintarBoton(texto: "9", metodo: () {}),
-    pintarBoton(texto: "/", metodo: () {}),
+    pintarBoton(widget: Text("7"), method: () {}),
+    pintarBoton(widget: Text("8"), method: () {}),
+    pintarBoton(widget: Text("9"), method: () {}),
+    pintarBoton(widget: Text("/"), method: () {}),
     pintarBoton(
-        texto: "=",
-        metodo: () {
+        widget: Text("="),
+        method: () {
           print("object");
         }),
   ];

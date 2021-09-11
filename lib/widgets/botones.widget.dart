@@ -2,16 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget pintarBoton(
-    {required String texto, required dynamic metodo, int valorFlex = 1}) {
+    {required Widget widget, required dynamic method, int flex = 1}) {
   return Expanded(
-      flex: valorFlex,
+    flex: flex,
+    child: Padding(
+      padding: const EdgeInsets.all(2.0),
       child: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: ElevatedButton(
-            onPressed: metodo,
-            child: Text(texto),
-          ),
+        child: ElevatedButton(
+          onPressed: method,
+          child: widget,
         ),
-      ));
+      ),
+    ),
+  );
 }

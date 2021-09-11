@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:semanda2flutter1/widgets/botones.widget.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotonesFila1(),
+                    children: _listaBotonesFila1M(),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -83,6 +84,20 @@ _listaBotonesFila1() {
       onPressed: () {},
       child: Text("C"),
     )
+  ];
+}
+
+_listaBotonesFila1M() {
+  return [
+    pintarBoton(texto: "7", metodo: () {}),
+    pintarBoton(texto: "8", metodo: () {}),
+    pintarBoton(texto: "9", metodo: () {}),
+    pintarBoton(texto: "/", metodo: () {}),
+    pintarBoton(
+        texto: "=",
+        metodo: () {
+          print("object");
+        }),
   ];
 }
 

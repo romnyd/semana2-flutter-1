@@ -12,10 +12,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-        backgroundColor: Colors.black,
-      ),
+      appBar: AppBar(title: Text("Home"),),
       body: Column(
         children: [
           Expanded(
@@ -23,118 +20,86 @@ class _HomePageState extends State<HomePage> {
             child: Container(
               child: Row(
                 children: [
-                  Text("Zona resultado"),
+                  Text("zona resultados"),
                 ],
               ),
               color: Colors.blue,
-            ),
-          ),
+            ))
+          ,
           Expanded(
             flex: 1,
             child: Container(
               child: Row(
                 children: [
-                  Text("Zona ingreso"),
+                  Text("zona ingreso"),
                 ],
               ),
               color: Colors.red,
-            ),
-          ),
-          Expanded(
+            ))
+            ,
+          Expanded( 
             flex: 2,
             child: Container(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotonesFila1M(),
-                  ),
+                    children: _listaBotonesFila1Prueba()),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotonesFila2(),
-                  ),
+                    children: _listaBotonesFila1Prueba()),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotonesFila3(),
-                  ),
-                  Row(
+                    children: _listaBotonesFila1Prueba()),
+                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotonesFila4(),
-                  ),
+                    children: _listaBotonesFila1Prueba()),
                 ],
               ),
-              color: Colors.blue,
-            ),
-          ),
+              color: Colors.green,
+            ))
+          ,
         ],
       ),
     );
   }
-}
 
-_listaBotonesFila1() {
-  return [
-    ElevatedButton(onPressed: () {}, child: Text("7")),
-    ElevatedButton(onPressed: () {}, child: Text("8")),
-    ElevatedButton(onPressed: () {}, child: Text("9")),
-    ElevatedButton(onPressed: () {}, child: Text("÷")),
-    ElevatedButton(onPressed: () {}, child: Icon(Icons.arrow_back)),
-    ElevatedButton(
-      onPressed: () {},
-      child: Text("C"),
-    )
-  ];
-}
 
-_listaBotonesFila1M() {
-  return [
-    pintarBoton(widget: Text("7"), method: () {}),
-    pintarBoton(widget: Text("8"), method: () {}),
-    pintarBoton(widget: Text("9"), method: () {}),
-    pintarBoton(widget: Text("/"), method: () {}),
-    pintarBoton(
-        widget: Text("="),
-        method: () {
-          print("object");
-        }),
-  ];
-}
+  _listaBotonesFila1Prueba() {
+    return [
+      pintarBoton(metodo: (){}, compoente:  Text("7"), colorBoton: Colors.yellow),
+      pintarBoton(metodo: (){}, compoente:  Icon(Icons.arrow_back_ios)),
+      pintarBoton(metodo: (){}, compoente:  Text("8")),
+      pintarBoton(metodo: (){}, compoente:  Text("9")),
+      pintarBoton(metodo: (){print("object");}, valorFlex: 4, compoente:  Text("=")),
+    ];
+  }
 
-_listaBotonesFila2() {
-  return [
-    ElevatedButton(onPressed: () {}, child: Text("4")),
-    ElevatedButton(onPressed: () {}, child: Text("5")),
-    ElevatedButton(onPressed: () {}, child: Text("6")),
-    ElevatedButton(onPressed: () {}, child: Text("*")),
-    ElevatedButton(onPressed: () {}, child: Text("(")),
-    ElevatedButton(
-      onPressed: () {},
-      child: Text(")"),
-    )
-  ];
-}
-
-_listaBotonesFila3() {
-  return [
-    ElevatedButton(onPressed: () {}, child: Text("1")),
-    ElevatedButton(onPressed: () {}, child: Text("2")),
-    ElevatedButton(onPressed: () {}, child: Text("3")),
-    ElevatedButton(onPressed: () {}, child: Text("-")),
-    ElevatedButton(onPressed: () {}, child: Text("Pow")),
-    ElevatedButton(
-      onPressed: () {},
-      child: Text("Sqrt"),
-    )
-  ];
-}
-
-_listaBotonesFila4() {
-  return [
-    ElevatedButton(onPressed: () {}, child: Text("0")),
-    ElevatedButton(onPressed: () {}, child: Text(".")),
-    ElevatedButton(onPressed: () {}, child: Text("%")),
-    ElevatedButton(onPressed: () {}, child: Text("+")),
-    ElevatedButton(onPressed: () {}, child: Text("=")),
-  ];
+  _listaBotonesFila1() {
+    return [
+      ElevatedButton(
+        onPressed: (){}, 
+        child: Text("7")
+      )
+      ,ElevatedButton(
+        onPressed: (){}, 
+        child: Text("8")
+      ),
+      ElevatedButton(
+        onPressed: (){}, 
+        child: Text("9")
+      ),
+      ElevatedButton(
+        onPressed: (){}, 
+        child: Text("÷")
+      ),
+      ElevatedButton(
+        onPressed: (){}, 
+        child: Icon(Icons.arrow_back)
+      ),
+      ElevatedButton(
+        onPressed: (){}, 
+        child: Text("C")
+      )];
+  }
 }

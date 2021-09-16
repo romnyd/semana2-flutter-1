@@ -1,18 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget pintarBoton(
-    {required Widget widget, required dynamic method, int flex = 1}) {
+    {required dynamic metodo,
+    int valorFlex = 1,
+    required Widget compoente,
+    dynamic colorBoton = Colors.red}) {
   return Expanded(
-    flex: flex,
-    child: Padding(
-      padding: const EdgeInsets.all(2.0),
+      flex: valorFlex,
       child: Container(
-        child: ElevatedButton(
-          onPressed: method,
-          child: widget,
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: colorBoton,
+              ),
+              onPressed: metodo,
+              child: compoente),
         ),
-      ),
-    ),
-  );
+      ));
 }

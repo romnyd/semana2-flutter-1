@@ -20,48 +20,45 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Mi Calculadora - @romnyd"),
-        backgroundColor: Color(0xff202124),
+        backgroundColor: Color(0xFF202124),
       ),
-      body: bodyWidget(),
+      body: body(),
     );
   }
-  
 
-  Container bodyWidget() {
+  Container body() {
     return Container(
-      color: Color(0xff202124),
+      color: Color(0xFF202124),
       child: Column(
         children: [
-          ContainerShowWidget(textValue: "$_result", fontSize: 40),
-          ContainerShowWidget(textValue: "$_expressions", fontSize: 30),
+          ContainerWidget(textValue: "$_result", fontSize: 40),
+          ContainerWidget(textValue: "$_expressions", fontSize: 30),
           Expanded(
             flex: 2,
             child: Container(
-              //width: double.infinity,
-              // height: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+              padding: EdgeInsets.symmetric(vertical: 1, horizontal: 5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotones1(),
+                    children: _listaBotonesFila1(),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotones2(),
+                    children: _listaBotonesFila2(),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotones3(),
+                    children: _listaBotonesFila3(),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: _listaBotones4(),
+                    children: _listaBotonesFila4(),
                   ),
                 ],
               ),
-              color: Color(0xff202124),
+              color: Color(0xFF202124),
             ),
           )
         ],
@@ -69,7 +66,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _listaBotones1() {
+  _listaBotonesFila1() {
     return [
       pintarBoton(
           metodo: () {
@@ -95,7 +92,7 @@ class _HomePageState extends State<HomePage> {
           metodo: () {
             addValue("remove_ant");
           },
-          componente: Text("<-")),
+          componente: Icon(Icons.arrow_back)),
       pintarBoton(
           metodo: () {
             cleanField();
@@ -104,7 +101,7 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  _listaBotones2() {
+  _listaBotonesFila2() {
     return [
       pintarBoton(
           metodo: () {
@@ -139,7 +136,7 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  _listaBotones3() {
+  _listaBotonesFila3() {
     return [
       pintarBoton(
           metodo: () {
@@ -174,7 +171,7 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  _listaBotones4() {
+  _listaBotonesFila4() {
     return [
       pintarBoton(
           metodo: () {
@@ -207,7 +204,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   addValue(String val) {
-    print("Llega $val");
+    print("Pintar $val");
     setState(() {
       if (_expressions == "0")
         _expressions = val;
@@ -241,11 +238,11 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class ContainerShowWidget extends StatelessWidget {
+class ContainerWidget extends StatelessWidget {
   final String textValue;
   final double fontSize;
 
-  const ContainerShowWidget(
+  const ContainerWidget(
       {Key? key, required this.textValue, required this.fontSize})
       : super(key: key);
 
@@ -255,8 +252,7 @@ class ContainerShowWidget extends StatelessWidget {
       flex: 2,
       child: Container(
         margin: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-            color: Color(0xff3C4043), borderRadius: BorderRadius.circular(50)),
+        decoration: BoxDecoration(color: Color(0xFF3C4043)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -269,7 +265,6 @@ class ContainerShowWidget extends StatelessWidget {
             )
           ],
         ),
-        //color: Color(0xff3C4043),
       ),
     );
   }

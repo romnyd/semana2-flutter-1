@@ -31,8 +31,8 @@ class _HomePageState extends State<HomePage> {
       color: Color(0xFF202124),
       child: Column(
         children: [
-          ContainerWidget(textValue: "$_result", fontSize: 40),
           ContainerWidget(textValue: "$_expressions", fontSize: 30),
+          ContainerWidget(textValue: "$_result", fontSize: 40),
           Expanded(
             flex: 2,
             child: Container(
@@ -208,7 +208,8 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       if (_expressions == "0")
         _expressions = val;
-      else
+      else if (val == 'remove_ant') {
+      } else
         _expressions += val;
     });
   }
@@ -224,11 +225,14 @@ class _HomePageState extends State<HomePage> {
     try {
       Parser parser = new Parser();
       ContextModel contextModel = new ContextModel();
+      print("Pintar $_expressions");
       Expression expressionFinal = parser.parse(_expressions);
       setState(() {
         _result = expressionFinal
             .evaluate(EvaluationType.REAL, contextModel)
             .toString();
+        _expressions = _expressions + '=' + _result;
+        print("Pintar $_expressions");
       });
     } catch (e) {
       setState(() {

@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 
 Widget pintarBoton(
     {required dynamic metodo,
-    int valorFlex = 1,
-    required Widget compoente,
-    dynamic colorBoton = Colors.red}) {
+    int valorflex = 1,
+    required Widget componente,
+    Color btnColor = const Color(0xff3C4043)}) {
   return Expanded(
-      flex: valorFlex,
+      flex: valorflex,
       child: Container(
         child: Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.all(3.0),
           child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: colorBoton,
-              ),
-              onPressed: metodo,
-              child: compoente),
+            style: ElevatedButton.styleFrom(
+              primary: btnColor,
+              onPrimary: Colors.white,
+            ),
+            onPressed: metodo,
+            child: componente,
+          ),
         ),
       ));
 }

@@ -70,32 +70,32 @@ class _HomePageState extends State<HomePage> {
     return [
       pintarBoton(
           metodo: () {
-            addValue("7");
+            addValueOperation("7");
           },
           componente: Text("7")),
       pintarBoton(
           metodo: () {
-            addValue("8");
+            addValueOperation("8");
           },
           componente: Text("8")),
       pintarBoton(
           metodo: () {
-            addValue("9");
+            addValueOperation("9");
           },
           componente: Text("9")),
       pintarBoton(
           metodo: () {
-            addValue("/");
+            addValueOperation("/");
           },
           componente: Text("/")),
       pintarBoton(
           metodo: () {
-            addValue("remove_ant");
+            addValueOperation("remove_ant");
           },
           componente: Icon(Icons.arrow_back)),
       pintarBoton(
           metodo: () {
-            cleanField();
+            cleanFieldsOperation();
           },
           componente: Text("C")),
     ];
@@ -105,32 +105,32 @@ class _HomePageState extends State<HomePage> {
     return [
       pintarBoton(
           metodo: () {
-            addValue("4");
+            addValueOperation("4");
           },
           componente: Text("4")),
       pintarBoton(
           metodo: () {
-            addValue("5");
+            addValueOperation("5");
           },
           componente: Text("5")),
       pintarBoton(
           metodo: () {
-            addValue("6");
+            addValueOperation("6");
           },
           componente: Text("6")),
       pintarBoton(
           metodo: () {
-            addValue("*");
+            addValueOperation("*");
           },
           componente: Text("x")),
       pintarBoton(
           metodo: () {
-            addValue("(");
+            addValueOperation("(");
           },
           componente: Text("(")),
       pintarBoton(
           metodo: () {
-            addValue(")");
+            addValueOperation(")");
           },
           componente: Text(")")),
     ];
@@ -140,32 +140,32 @@ class _HomePageState extends State<HomePage> {
     return [
       pintarBoton(
           metodo: () {
-            addValue("1");
+            addValueOperation("1");
           },
           componente: Text("1")),
       pintarBoton(
           metodo: () {
-            addValue("2");
+            addValueOperation("2");
           },
           componente: Text("2")),
       pintarBoton(
           metodo: () {
-            addValue("3");
+            addValueOperation("3");
           },
           componente: Text("3")),
       pintarBoton(
           metodo: () {
-            addValue("-");
+            addValueOperation("-");
           },
           componente: Text("-")),
       pintarBoton(
           metodo: () {
-            addValue("");
+            addValueOperation("x²");
           },
           componente: Text("x²")),
       pintarBoton(
           metodo: () {
-            addValue("");
+            addValueOperation("√");
           },
           componente: Text("√")),
     ];
@@ -175,27 +175,27 @@ class _HomePageState extends State<HomePage> {
     return [
       pintarBoton(
           metodo: () {
-            addValue("0");
+            addValueOperation("0");
           },
           componente: Text("0")),
       pintarBoton(
           metodo: () {
-            addValue(".");
+            addValueOperation(".");
           },
           componente: Text(".")),
       pintarBoton(
           metodo: () {
-            addValue("%");
+            addValueOperation("%");
           },
           componente: Text("%")),
       pintarBoton(
           metodo: () {
-            addValue("+");
+            addValueOperation("+");
           },
           componente: Text("+")),
       pintarBoton(
           metodo: () {
-            generateResult();
+            resultView();
           },
           componente: Text("="),
           valorflex: 2,
@@ -203,8 +203,8 @@ class _HomePageState extends State<HomePage> {
     ];
   }
 
-  addValue(String val) {
-    print("Pintar $val");
+  addValueOperation(String val) {
+    print("Selecciono $val");
     setState(() {
       if (_expressions == "0")
         _expressions = val;
@@ -214,25 +214,33 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  cleanField() {
+  cleanFieldsOperation() {
     setState(() {
       _expressions = "";
       _result = "";
     });
   }
 
-  generateResult() {
+  resultView() {
     try {
       Parser parser = new Parser();
       ContextModel contextModel = new ContextModel();
-      print("Pintar $_expressions");
+      print("Selecciono $_expressions");
+      if (_expressions.contains('√')) {
+        _expressions = _expressions.replaceAll('√', 'sqrt');
+      }
+      if (_expressions.contains('x²')) {
+        _expressions = _expressions.replaceAll('x²', '*');
+        _expressions = _expressions + _expressions[0];
+      }
       Expression expressionFinal = parser.parse(_expressions);
+
       setState(() {
         _result = expressionFinal
             .evaluate(EvaluationType.REAL, contextModel)
             .toString();
-        _expressions = _expressions + '=' + _result;
-        print("Pintar $_expressions");
+
+        print("Selecciono $expressionFinal");
       });
     } catch (e) {
       setState(() {
